@@ -128,6 +128,25 @@ if (app.Environment.IsDevelopment())
         }
         
         c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
+        
+        // تنظیمات اضافی برای بهبود رابط کاربری
+        c.DocumentTitle = "WebApi Documentation";
+        c.DefaultModelsExpandDepth(-1); // مخفی کردن مدل‌ها به صورت پیش‌فرض
+        c.DefaultModelRendering(Swashbuckle.AspNetCore.SwaggerUI.ModelRendering.Model);
+        c.DisplayRequestDuration();
+        c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List); // نمایش لیست به صورت پیش‌فرض
+        c.EnableDeepLinking();
+        c.EnableFilter();
+        c.ShowExtensions();
+        c.EnableValidator();
+        c.SupportedSubmitMethods(Swashbuckle.AspNetCore.SwaggerUI.SubmitMethod.Get, 
+                                Swashbuckle.AspNetCore.SwaggerUI.SubmitMethod.Post,
+                                Swashbuckle.AspNetCore.SwaggerUI.SubmitMethod.Put,
+                                Swashbuckle.AspNetCore.SwaggerUI.SubmitMethod.Delete);
+        
+        // اضافه کردن CSS و JavaScript سفارشی برای بهبود ظاهر
+        c.InjectStylesheet("/swagger-ui/custom.css");
+        c.InjectJavascript("/swagger-ui/custom.js");
     });
 }
 
